@@ -113,7 +113,6 @@ Fourh Area :
     
     cy.log(x);
     
-    ```
     
    cy.get('[ test-data="area_1_myscore"]').find('[test-data="filledStar"]').should('have.length', x)
   });
