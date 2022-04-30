@@ -137,6 +137,129 @@ https://user-images.githubusercontent.com/79005401/165784946-45063cfe-e8da-44b6-
 
 # Search Page(Part 1)_Shada Bana
 
+Visit search page
+```
+describe('searchPage', () => {
+  beforeEach(() => {
+
+    cy.visit('https://skillsmatch.mdx.ac.uk/en/search/')
+  })
+```
+## First test case _ search and match the total match in couse page
+Login to the system using valid information
+```
+ it('search and total match', () => {
+    cy.get("input[name=username]")
+    .type('shada-bana');
+    cy.get("input[name=password]")
+    .type('12345')
+    .type("{enter}");
+ ```
+ then enter to search page
+ Then atart serch with word `java`
+ ```
+   cy.get("#searchFrom > div:nth-child(2) > div.col-7 > tags > span")
+    .type('java');
+```
+Click search and the result shown
+Then go to the course page and we check if the match number og the word = the number in thw course only in description.
+
+Take the number of matched word by split the text `Total Matches : 43` and take only the numer `43`
+```
+ cy.get("#search-result > div:nth-child(1) > span.badge.badge-primary")
+      .invoke('text')
+      .then(text=>{
+        const matchednumber = +text.split(':')[1]
+        cy.log(matchednumber);
+      })
+```
+Visit the course page
+
+` cy.visit('https://skillsmatch.mdx.ac.uk/en/course/5780?keywords=java');`
+
+then get the description in couse page and match the words with the matched number
+```
+ cy.get('body > div:nth-child(2) > div.container > div:nth-child(9)')
+     .invoke('text')
+     .then(text=>{
+      text.match('Java',36);
+     })
+
+```
+## Second test case_search with all key word
+Login to the system using valid information
+```
+ it('search and total match', () => {
+    cy.get("input[name=username]")
+    .type('shada-bana');
+    cy.get("input[name=password]")
+    .type('12345')
+    .type("{enter}");
+ ```
+ then enter to search page
+  Then start serch with word `java`
+ ```
+   cy.get("#searchFrom > div:nth-child(2) > div.col-7 > tags > span")
+    .type('java');
+```
+click to search button 
+```
+ const button=cy.get("#searchFrom > div:nth-child(2) > div.input-group-append.col-2 > button");
+    button.click();
+```
+Search with the second word `software` and click search
+```
+   cy.get("#searchFrom > div:nth-child(2) > div.col-7 > tags > span")
+    .type('Software');
+
+    button.click();
+```
+Click search and the result shown
+Then click advanced option and choose match all
+```
+ cy.get('#searchFrom > div:nth-child(3) > div.col-7 > div > div.card-header > a')
+    .click();
+    cy.get('#match_all')
+    .click();
+    cy.get("#searchFrom > div:nth-child(2) > div.input-group-append.col-2 > button").click();
+```
+Then we should get the word that we are search with --> `java` and `software`
+so we go to search bar and get the words by
+here we get the first word `java`
+```
+ cy.get("#searchFrom > div:nth-child(2) > div.col-7 > tags > tag:nth-child(1)")
+     .invoke('text')
+     .then(text=>{
+       var search1=text
+       cy.log(search1);
+
+     })
+```
+then get the second word `software`
+```
+  cy.get("#searchFrom > div:nth-child(2) > div.col-7 > tags > tag:nth-child(2)")
+     .invoke('text')
+     .then(text=>{
+      var search2=text
+      cy.log(search2);
+
+    }) 
+```
+finally compare for each word if we have the 2 key word
+```
+     cy.get("#search-result > div:nth-child(1) > span:nth-child(4)")
+     .should('have.text','\n            java\n        ');
+     
+      cy.get("#search-result > div:nth-child(1) > span:nth-child(5)")
+     .should('have.text','\n            software\n        ');
+```
+
+
+
+
+ 
+
+  
 
 
 
