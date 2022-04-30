@@ -253,6 +253,8 @@ finally compare for each word if we have the 2 key word
       cy.get("#search-result > div:nth-child(1) > span:nth-child(5)")
      .should('have.text','\n            software\n        ');
 ```
+## all test cases passes sucessfuly 
+![image](https://user-images.githubusercontent.com/79002035/166087448-82220546-cb22-4bea-b27f-6178e644c4de.png)
 
 
 
