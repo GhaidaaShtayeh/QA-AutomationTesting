@@ -256,6 +256,59 @@ finally compare for each word if we have the 2 key word
 ## all test cases passes sucessfuly 
 ![image](https://user-images.githubusercontent.com/79002035/166087448-82220546-cb22-4bea-b27f-6178e644c4de.png)
 
+# Search page process(part 2) - Israa Amour
+- The 4 test case / translate keyword senario :
+* Visit skills match website :
+```
+ beforeEach(() => {
+
+        cy.visit('https://skillsmatch.mdx.ac.uk/en/search/')
+      })
+```
+* Log into account :
+```
+  cy.get("input[name=username]").type("00");
+        cy.get("input[name=password]").type("00").type("{enter}");
+```
+* Insert into keyword component a specific word in arabic (برمجة ):
+ ```
+        cy.get("#searchFrom > div:nth-child(2) > div.col-7 > tags > span").type("برمجة");
+ ```
+* Display Advanced Optiens card:
+```
+        cy.get(".card-link").click({ force: true });
+
+```
+* Select fron translating to English :
+```
+        cy.get("#translateInput").select("en");
+ ```
+ * Click into search button :
+ ```
+         cy.get("[test-data=searchButton]").click({ force: true });
+ ```
+ * Search Results are displayed :
+  ```
+
+         cy.get("#search-result").click({ force: true });
+  ```
+* Check if the word matches what translation and results are shown:
+ ```
+    cy.get('[test-data=MatchedKeywords]').each((item) => {
+            cy.wrap(item).should('contain.text', 'programming')
+        })
+ ```
+ # Test case passed :
+![testcase1](https://user-images.githubusercontent.com/79007080/166128581-2e8af30e-2db5-4353-b79c-cc6d2a5c4220.png)
+
+
+ 
+
+
+
+
+
+
 
 
 
