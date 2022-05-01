@@ -302,7 +302,7 @@ finally compare for each word if we have the 2 key word (for each course)
      .should('have.text','\n            software\n        ');
 ```
 ## all test cases passes sucessfuly 
-![image](https://user-images.githubusercontent.com/79002035/166087448-82220546-cb22-4bea-b27f-6178e644c4de.png)
+![image](https://user-images.githubusercontent.com/79002035/166134900-18507b78-67cc-45e6-a969-e2889dd3dcf7.png)
 
 # Search page process(part 2) - Israa Amour
 - The 4 test case / translate keyword senario :
