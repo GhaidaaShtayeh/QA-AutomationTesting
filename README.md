@@ -355,6 +355,47 @@ https://user-images.githubusercontent.com/79002035/166135413-8d563857-c12f-4431-
  ```
  # Test case passed :
 ![testcase1](https://user-images.githubusercontent.com/79007080/166128581-2e8af30e-2db5-4353-b79c-cc6d2a5c4220.png)
+## Search page process/testcase-5- Israa Amour
+# Serch based on user reviews 
+* VIsit my website - skills match 
+   beforeEach(() => {
+
+        cy.visit('https://skillsmatch.mdx.ac.uk/en/search/')
+    })
+* log into my account :
+
+      cy.get("input[name=username]").type("00");
+      cy.get("input[name=password]").type("00").type("{enter}");
+      
+* Insert a keyword in English that is valid - python:
+
+        cy.get("#searchFrom > div:nth-child(2) > div.col-7 > tags > span").type("python");
+* Click into advanced optiens then the 4th optien which is / user reviews 
+
+        cy.get(".card-link").click({ force: true });
+        cy.get("[test-data=sort_by_user_reviews]").click({ force: true });
+* Click on search button :
+
+        cy.get("[test-data=searchButton]").click({ force: true });
+        
+* Display search results :
+
+        cy.get("#search-result").click({ force: true });
+* Check if the starts/ user reviews of the secend result is less or eq to the first result :
+
+        cy.get(['#search-result > div:nth-child(2) > div.ratingme.smallRate'])
+        .its('length')
+        .then((size)=>{
+            cy.get(['#search-result > div:nth-child(1) > div.ratingme.smallRate'])
+            .its('length')
+            .should('be.gte',size)
+        })
+* Process passed:
+
+![userreives](https://user-images.githubusercontent.com/79007080/166143299-de325278-569a-4dae-8098-b07157ea41ef.png)
+
+
+
 
 
  
