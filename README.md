@@ -312,7 +312,7 @@ https://user-images.githubusercontent.com/79002035/166135413-8d563857-c12f-4431-
 
 
 # Search page process(part 2) - Israa Amour
-- The 4 test case / translate keyword senario :
+# The 4 test case / translate keyword senario :
 * Visit skills match website :
 ```
  beforeEach(() => {
@@ -356,7 +356,7 @@ https://user-images.githubusercontent.com/79002035/166135413-8d563857-c12f-4431-
  # Test case passed :
 ![testcase1](https://user-images.githubusercontent.com/79007080/166128581-2e8af30e-2db5-4353-b79c-cc6d2a5c4220.png)
 ## Search page process/testcase-5- Israa Amour
-# Serch based on user reviews 
+# Search based on user reviews 
 * VIsit my website - skills match 
    beforeEach(() => {
 
