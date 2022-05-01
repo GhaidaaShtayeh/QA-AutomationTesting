@@ -396,6 +396,11 @@ https://user-images.githubusercontent.com/79002035/166135413-8d563857-c12f-4431-
 
 
 
+## For search page2 demo:
+https://user-images.githubusercontent.com/79007080/166143664-1ae2c16d-1344-4bb8-8259-38d2bd495889.mp4
+
+
+
 
 
  
