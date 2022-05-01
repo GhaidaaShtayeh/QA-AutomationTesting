@@ -178,13 +178,45 @@ Visit the course page
 ` cy.visit('https://skillsmatch.mdx.ac.uk/en/course/5780?keywords=java');`
 
 then get the description in couse page and match the words with the matched number
+in the description there `p html element` and `li html element` --> so first take the `p html element` and split the tect into words and match if this word = the word in search
 ```
  cy.get('body > div:nth-child(2) > div.container > div:nth-child(9)')
-     .invoke('text')
-     .then(text=>{
-      text.match('Java',36);
-     })
+  .each($p => {
+    let wordFilter=0;
+    $p.text().split(' ').forEach(word=>{
+      if(word =='Java'||word =='java')
+       wordFilter++
+    })
 
+```
+then the same in `li html element` 
+```
+ cy.get('body > div:nth-child(2) > div.container > div:nth-child(9)')
+    .each($li => {
+      $li.text().split(' ').forEach(wordd=>{
+        if(wordd =='Java'||wordd =='java')
+         wordFilter++;  
+  })
+ ```
+ and here take the number og matvhed word ad compare it with the word in the course
+ ```
+ }).then(wordFilter=>{
+    cy.visit('https://skillsmatch.mdx.ac.uk/en/search/')
+    cy.get("#searchFrom > div:nth-child(2) > div.col-7 > tags > span")
+    .type('java');
+     cy.get("#searchFrom > div:nth-child(2) > div.input-group-append.col-2 > button")
+     .click();
+      cy.get("#search-result > div:nth-child(1) > div:nth-child(1) > h4")
+      .click();
+      
+      cy.get("#search-result > div:nth-child(1) > span.badge.badge-primary")
+      .invoke('text')
+      .then(text=>{
+        let matched = +text.split(':')[1]
+        cy.log(matched);
+      })
+    
+     expect(wordFilter).to.equal(matched)
 ```
 ## Second test case_search with all key word
 Login to the system using valid information
@@ -245,12 +277,28 @@ then get the second word `software`
 
     }) 
 ```
-finally compare for each word if we have the 2 key word
+finally compare for each word if we have the 2 key word (for each course)
 ```
      cy.get("#search-result > div:nth-child(1) > span:nth-child(4)")
      .should('have.text','\n            java\n        ');
      
       cy.get("#search-result > div:nth-child(1) > span:nth-child(5)")
+     .should('have.text','\n            software\n        ');
+        cy.get("#search-result > div:nth-child(2) > span:nth-child(4)")
+     .should('have.text','\n            java\n        ');
+     cy.get("#search-result > div:nth-child(2) > span:nth-child(5)")
+     .should('have.text','\n            software\n        ');
+     cy.get("#search-result > div:nth-child(3) > span:nth-child(4)")
+     .should('have.text','\n            java\n        ');
+     cy.get("#search-result > div:nth-child(3) > span:nth-child(5)")
+     .should('have.text','\n            software\n        ');
+     cy.get("#search-result > div:nth-child(4) > span:nth-child(4)")
+     .should('have.text','\n            java\n        ');
+     cy.get("#search-result > div:nth-child(4) > span:nth-child(5)")
+     .should('have.text','\n            software\n        ');
+     cy.get("#search-result > div:nth-child(5) > span:nth-child(4)")
+     .should('have.text','\n            java\n        ');
+     cy.get("#search-result > div:nth-child(5) > span:nth-child(5)")
      .should('have.text','\n            software\n        ');
 ```
 ## all test cases passes sucessfuly 
