@@ -5,7 +5,7 @@
 
 
 
-# Update MY Skills Profile - Ghaidaa Shtayeh
+# Update MY Skills Profile
 
 ![image](https://user-images.githubusercontent.com/79005401/165772758-054055b7-fccb-4994-b99f-753905574964.png)
 
@@ -135,7 +135,7 @@ https://user-images.githubusercontent.com/79005401/165784946-45063cfe-e8da-44b6-
 
 
 
-# Search Page(Part 1)_Shada Bana
+# Search Page(Part 1)
 
 Visit search page
 ```
@@ -311,7 +311,7 @@ finally compare for each word if we have the 2 key word (for each course)
 https://user-images.githubusercontent.com/79002035/166135413-8d563857-c12f-4431-a7e1-45fe6d4062a5.mp4
 
 
-# Search page process(part 2) - Israa Amour
+# Search page process(part 2)
 # The 4 test case / translate keyword senario :
 * Visit skills match website :
 ```
