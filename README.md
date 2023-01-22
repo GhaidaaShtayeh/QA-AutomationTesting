@@ -1,5 +1,4 @@
-# QA-AutomationTesting
-
+# Skills-Match-Automation-Testing
 ## TestCases Details: https://docs.google.com/spreadsheets/d/15DDsoqaaGOU85vk9JUOCpwLf1xOZHew9kB5buK3GcnA/edit?usp=sharing
 
 
